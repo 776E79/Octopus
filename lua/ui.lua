@@ -1,5 +1,5 @@
 vim.opt.background = "light"
-vim.cmd.colorscheme('github_light_dimmed')
+vim.cmd.colorscheme('github_light_default')
 
 require('telescope').setup({
     defaults = {
