@@ -7,7 +7,6 @@ require("mason-lspconfig").setup({
         "ruff",
         "bashls",
         "clangd",
-        "asm_lsp",
     },
 })
 

@@ -39,21 +39,6 @@ autocmd("BufWritePre", {
     end,
 })
 
--- Session Management
-local session_file = vim.fn.getcwd() .. "/.workspace/last_session.vim"
-
-autocmd("VimLeavePre", {
-    callback = function()
-        -- Ensure .workspace exists before saving
-        if vim.fn.isdirectory(".workspace") == 1 then
-            local ok, nvim_tree = pcall(require, "nvim-tree.api")
-            if ok then nvim_tree.tree.close() end
-
-            vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
-        end
-    end,
-})
-
 -- We want Makefile to be picked up every time one exists,
 -- regardless of the file type.
 vim.api.nvim_create_autocmd("FileType", {
@@ -65,36 +50,6 @@ vim.api.nvim_create_autocmd("FileType", {
         else
             vim.opt_local.makeprg = "make"
         end
-    end,
-})
-
--- Enter into default layout:
---   file exporer on the left
---   terminal on bottom left
---   quickfix window on bottom right
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    require("nvim-tree.api").tree.open()
-    vim.cmd("wincmd l")
-
-    -- 25% of window height
-    vim.cmd("botright copen" .. math.floor((vim.o.lines * 0.25)))
-    vim.cmd("vsplit | term")
-
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-
-    vim.cmd("wincmd t")
-    vim.cmd("wincmd l")
-  end,
-})
-
--- Open splits in the more natural way, not the obnoxious Vim way
--- (why does Vim even do it that way?)
-vim.api.nvim_create_autocmd("WinNew", {
-    callback = function()
-        vim.opt.splitright = true
-        vim.opt.splitbelow = true
     end,
 })
 

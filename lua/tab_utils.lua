@@ -20,13 +20,11 @@ function _G.tabutils.set_tab_name(tab, name)
 end
 
 function _G.tabutils.get_tab_name(tab)
-    -- 1. Check if a manual name exists
     local ok, name = pcall(vim.api.nvim_tabpage_get_var, tab, "tab_name")
     if ok and type(name) == "string" and name ~= "" then
         return name
     end
 
-    -- 2. Auto-detect Plugin Context
     local wins = vim.api.nvim_tabpage_list_wins(tab)
     for _, win in ipairs(wins) do
         local buf = vim.api.nvim_win_get_buf(win)
@@ -41,7 +39,6 @@ function _G.tabutils.get_tab_name(tab)
         end
     end
 
-    -- 3. Fallback to first buffer name or "unnamed"
     local cur_win = vim.api.nvim_tabpage_get_win(tab)
     local cur_buf = vim.api.nvim_win_get_buf(cur_win)
     local buf_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(cur_buf), ":t")

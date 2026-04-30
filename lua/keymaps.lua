@@ -2,7 +2,6 @@ local files = require('file_utils')
 local palette = require('telescope_palette')
 local t_diff = require('telescope_diff')
 local buffer_utils = require("buffer_utils")
-local session_utils = require('session_utils')
 
 -- File operations
 vim.keymap.set('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save current buffer' })
@@ -67,9 +66,9 @@ vim.keymap.set('n', '<leader>#', ':Telescope lsp_workspace_symbols<CR>', { desc 
 vim.keymap.set('n', '<leader>/', 'gcc', { remap = true, desc = "Toggle line comment" })
 vim.keymap.set('v', '<leader>/', 'gc', { remap = true, desc = "Toggle block comment" })
 vim.keymap.set('n', '<leader>qf', '<cmd>copen<cr>', { desc = 'Focus on quickfix window' })
-vim.keymap.set('n', '<leader>qk', '<cmd>copen<cr>', { desc = 'Kill the quickfix window' })
+vim.keymap.set('n', '<leader>qk', '<cmd>cclose<cr>', { desc = 'Kill the quickfix window' })
 vim.keymap.set('n', '<leader>qn', '<cmd>cnext<cr>', { desc = 'Jump to next fix' })
-vim.keymap.set('n', '<leader>qn', '<cmd>cprev<cr>', { desc = 'Jump to prev fix' })
+vim.keymap.set('n', '<leader>qp', '<cmd>cprev<cr>', { desc = 'Jump to prev fix' })
 vim.keymap.set('n', '<leader>mk', '<cmd>silent make | redraw!<cr>', { desc = 'Run make and display output in quickfix window' })
 
 -- Sequential Diff
@@ -89,10 +88,4 @@ vim.keymap.set('n', '<leader>Gd', ':DiffviewOpen HEAD -- %<cr>', { desc = 'Diff 
 vim.keymap.set('n', '<leader>ht', ':split | term<CR>', { desc = 'Horizontal terminal' })
 vim.keymap.set('n', '<leader>vt', ':vsplit | term<CR>', { desc = 'Vertical terminal' })
 vim.keymap.set('n', '<leader>Tt', ':tabnew | term<CR>', { desc = 'Tab terminal' })
-vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n><C-w>p]], { desc = 'Escape terminal to previous window' })
-vim.keymap.set('n', '<leader>t', function() local winid = vim.fn.bufwinid('term://') if winid ~= -1 then vim.api.nvim_set_current_win(winid) else vim.cmd('botright copen 10') vim.cmd('vsplit') vim.cmd('term') end vim.cmd('startinsert') end, { desc = 'Jump to terminal if open, or create one if not' })
-
--- Session control (preserve/load)
-vim.keymap.set('n', '<leader>SS', session_utils.save_session_as, { desc = "Save Session" })
-vim.keymap.set('n', '<leader>SL', session_utils.load_session, { desc = "Load Session" })
 

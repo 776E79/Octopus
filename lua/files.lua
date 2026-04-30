@@ -23,7 +23,6 @@ require('nvim-tree').setup({
             },
         },
         icons = {
-            -- CORRECTED: These are now direct children of 'icons'
             webdev_colors = true,
             show = {
                 file = true,
