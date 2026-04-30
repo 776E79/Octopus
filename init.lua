@@ -16,7 +16,6 @@ if not is_headless then
     -- Load utilities that depend on Telescope/Plugins
     require('tab_utils')
     require('file_utils')
-    require('session_utils')
     require('buffer_utils')
     require('telescope_diff')
     require('telescope_palette')
