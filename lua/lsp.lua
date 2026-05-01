@@ -84,9 +84,6 @@ require('blink.cmp').setup({
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    list = { 
-        selection = { preselect = false } 
-    },
     signature = { 
         enabled = true,
         window = {

@@ -3,6 +3,14 @@ local palette = require('telescope_palette')
 local t_diff = require('telescope_diff')
 local buffer_utils = require("buffer_utils")
 
+function toggle_tree()
+    if vim.bo.filetype == "NvimTree" then 
+        vim.cmd("wincmd p") 
+    else 
+        vim.cmd("NvimTreeFocus") 
+    end
+end
+
 -- File operations
 vim.keymap.set('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save current buffer' })
 vim.keymap.set('n', '<leader>ss', '<cmd>wa<cr>', { desc = 'save all buffers' })
@@ -10,6 +18,7 @@ vim.keymap.set('n', '<leader>sa', files.save_as, { desc = 'Save buffer as...' })
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 vim.keymap.set('n', '<leader>q', ':qa<CR>', { desc = 'Quit all' })
 vim.keymap.set('n', '<leader>QQ', ':qa!<CR>', { desc = 'Force quit all' })
+vim.keymap.set("n", "<leader>e", toggle_tree, { desc = 'Toggle file explorer focus' })
 
 -- Splits and windowing
 vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Vertical split' })

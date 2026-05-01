@@ -1,15 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- File Tree Toggle logic
-function _G.toggle_tree()
-    if vim.bo.filetype == "NvimTree" then 
-        vim.cmd("wincmd p") 
-    else 
-        vim.cmd("NvimTreeFocus") 
-    end
-end
-vim.keymap.set("n", "<leader>e", _G.toggle_tree)
-
 -- Make sure we do not draw line numbers in terminal.
 autocmd("TermOpen", {
     callback = function()
