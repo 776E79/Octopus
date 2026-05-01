@@ -27,8 +27,6 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lukas-reineke/virt-column.nvim'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'projekt0n/github-nvim-theme'
 

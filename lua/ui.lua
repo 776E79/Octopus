@@ -28,7 +28,7 @@ require('telescope').setup({
 vim.api.nvim_set_hl(0, "VirtColumn", { fg = "#B69A9A", bg = "none" })
 require("virt-column").setup({
     char = "│",
-    virtcolumn = "80",
+    virtcolumn = "100",
 })
 
 -- Padding between gutter and main text

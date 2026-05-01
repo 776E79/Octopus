@@ -17,6 +17,7 @@ if not is_headless then
     require('tab_utils')
     require('file_utils')
     require('buffer_utils')
+    require('format_utils')
     require('telescope_diff')
     require('telescope_palette')
 
