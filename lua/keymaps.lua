@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>sa', files.save_as, { desc = 'Save buffer as...' })
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 vim.keymap.set('n', '<leader>q', ':qa<CR>', { desc = 'Quit all' })
 vim.keymap.set('n', '<leader>QQ', ':qa!<CR>', { desc = 'Force quit all' })
-vim.keymap.set("n", "<leader>e", toggle_tree, { desc = 'Toggle file explorer focus' })
+vim.keymap.set('n', '<leader>e', toggle_tree, { desc = 'Toggle file explorer focus' })
 
 -- Splits and windowing
 vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Vertical split' })
