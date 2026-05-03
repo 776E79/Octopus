@@ -6,12 +6,11 @@ vim.lsp.config('clangd', {
         'clangd', 
         '--background-index', 
         '--header-insertion=never' ,
+        '--function-arg-placeholders=0',
     },
-    -- This is the equivalent of root_dir
     root_markers = { '.clangd', 'compile_commands.json', 'Makefile', '.git' },
 })
 vim.lsp.enable('clangd')
-
 
 -- bash/sh
 -- requirements
@@ -65,6 +64,7 @@ require('blink.cmp').setup({
         ["<Tab>"]   = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
         ["<CR>"]    = { "accept", "fallback" },
+        ["<C-s>"]   = { "show_signature", "hide_signature", "fallback" },
     },
     completion = {
         menu = {
@@ -80,15 +80,20 @@ require('blink.cmp').setup({
                 'CursorLine:BlinkCmpDocCursorLine,Search:None',
             },
         },
+        accept = { auto_brackets = { enabled = false, }, },
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    signature = { 
+    signature = {
         enabled = true,
+        trigger = {
+            show_on_insert_or_trigger_character = true,
+        },
         window = {
             border = 'rounded',
-            winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,Search:None',
+            winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,'..
+            'CursorLine:BlinkCmpDocCursorLine,Search:None',
         },
     },
 })
