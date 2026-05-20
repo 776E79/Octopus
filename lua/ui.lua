@@ -1,6 +1,14 @@
 vim.opt.background = "light"
 vim.cmd.colorscheme('github_light_default')
 
+-- Make terminal background a little darker for distinction.
+-- This requires a theme that supports this. 
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function()
+        vim.wo.winhighlight = "Normal:NormalSB,SignColumn:SignColumnSB"
+    end,
+})
+
 require('telescope').setup({
     defaults = {
         -- This affects live_grep and other search tools
