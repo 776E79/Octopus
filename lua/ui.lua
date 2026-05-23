@@ -1,5 +1,5 @@
-vim.opt.background = "light"
-vim.cmd.colorscheme('github_light_default')
+vim.opt.background = "dark"
+vim.cmd.colorscheme('github_dark_dimmed')
 
 -- Make terminal background a little darker for distinction.
 -- This requires a theme that supports this. 

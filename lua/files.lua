@@ -1,6 +1,21 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Enable autoreload of buffers
+vim.o.autoread = true
+
+local autoreload_group = vim.api.nvim_create_augroup("AutoReloadBuffer", { clear = true })
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    group = autoreload_group,
+    pattern = "*",
+    callback = function()
+        if vim.fn.mode() ~= "c" and vim.bo.buftype == "" then
+            vim.cmd("checktime")
+        end
+    end,
+})
+
 require('nvim-tree').setup({
     sort = {
         sorter = "case_sensitive",
