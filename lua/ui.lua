@@ -1,6 +1,9 @@
 vim.opt.background = "dark"
 vim.cmd.colorscheme('github_dark_dimmed')
 
+-- Do not force window equalization when a window is opened or closed.
+vim.o.equalalways = false
+
 -- Make terminal background a little darker for distinction.
 -- This requires a theme that supports this. 
 vim.api.nvim_create_autocmd("TermOpen", {
