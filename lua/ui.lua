@@ -74,3 +74,19 @@ vim.diagnostic.config({
     },
 })
 
+local function restore_nvim_tree()
+    local has_tree, api = pcall(require, "nvim-tree.api")
+    if has_tree then
+        api.tree.open({ focus = false, find_file = true })
+    end
+end
+
+local session_group = vim.api.nvim_create_augroup("SessionRestore", { clear = true })
+
+vim.api.nvim_create_autocmd("SessionLoadPost", {
+    group = session_group,
+    callback = function()
+        vim.defer_fn(restore_nvim_tree, 50)
+    end,
+})
+
