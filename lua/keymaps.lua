@@ -21,10 +21,7 @@ vim.keymap.set('n', '<leader>QQ', ':qa!<CR>', { desc = 'Force quit all' })
 vim.keymap.set('n', '<leader>e', toggle_tree, { desc = 'Toggle file explorer focus' })
 vim.keymap.set('n', '<leader>E', ':NvimTreeToggle<CR>', { desc = 'Toggle file' })
 
--- Splits and windowing
-vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Vertical split' })
-vim.keymap.set('n', '<leader>hs', ':split<CR>', { desc = 'Horizontal split' })
-vim.keymap.set('n', '<leader>M', ':MaximizerToggle<CR>', { desc = 'Maximize window' })
+-- Windowing
 vim.keymap.set('n', '<leader>wn', '<C-w>n', { desc = 'Quickly jump to next window (creates one if none)' })
 vim.keymap.set('n', '<leader>wp', '<C-w>p', { desc = 'Quickly jump to prev window (creates one if none)' })
 vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Quickly jump to window on the right' })
@@ -80,7 +77,7 @@ vim.keymap.set('n', '<leader>qk', '<cmd>cclose<cr>', { desc = 'Kill the quickfix
 vim.keymap.set('n', '<leader>qn', '<cmd>cnext<cr>', { desc = 'Jump to next fix' })
 vim.keymap.set('n', '<leader>qp', '<cmd>cprev<cr>', { desc = 'Jump to prev fix' })
 vim.keymap.set('n', '<leader>mk', '<cmd>silent make | redraw!<cr>', { desc = 'Run make and display output in quickfix window' })
-vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Show signature help' })
+vim.keymap.set('i', '<leader>K', vim.lsp.buf.signature_help, { desc = 'Show signature help' })
 
 -- Sequential Diff
 vim.keymap.set('n', '<leader>db', function() t_diff.diff_sequentially("buffers") end, { desc = 'Diff buffers' })
