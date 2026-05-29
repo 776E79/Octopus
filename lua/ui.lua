@@ -3,21 +3,20 @@ vim.cmd.colorscheme('github_light_default')
 vim.o.equalalways = false
 vim.opt.winbar = " %t %m%= "
 
--- Make terminal background a little darker for distinction.
--- This requires a theme that supports this. 
-vim.api.nvim_create_autocmd("TermOpen", {
-    callback = function()
-        vim.wo.winhighlight = "Normal:NormalSB,SignColumn:SignColumnSB"
-    end,
-})
+local UI_Highlight_Group = vim.api.nvim_create_augroup("WinHighlightManagement", { clear = true })
 
--- WinBar should be slightly darker
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "TermOpen" }, {
+    group = UI_Highlight_Group,
     callback = function()
         if vim.bo.filetype == "NvimTree" then
             return
         end
-        vim.wo.winhighlight = "WinBar:NormalSB,SignColumn:SignColumnSB"
+
+        if vim.bo.buftype == "terminal" then
+            vim.wo.winhighlight = "Normal:NormalSB,WinBar:NormalSB,SignColumn:SignColumnSB"
+        else
+            vim.wo.winhighlight = "WinBar:NormalSB,SignColumn:SignColumnSB"
+        end
     end,
 })
 
