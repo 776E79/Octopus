@@ -26,6 +26,9 @@ if not is_headless then
     require('autocommands')
     require('statline')
     require('ui')
+
+    -- Load other options
+    require('remote')
 else
     -- In headless mode, we only want the bare minimum keymaps
     -- so we don't trigger "module not found" errors.

@@ -20,7 +20,3 @@ opt.lazyredraw = true
 opt.synmaxcol = 200
 opt.comments = "sl:/*,mb:\\ *,elx:*/"
 
--- Highlights
-vim.api.nvim_set_hl(0, "LineNr", { fg = "#9a9a9a" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bold = true, fg = "#5a5a5a" })
-
