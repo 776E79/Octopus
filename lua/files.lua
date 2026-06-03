@@ -23,10 +23,14 @@ require('nvim-tree').setup({
     hijack_cursor = true,
     sync_root_with_cwd = true,
     view = { 
-        preserve_window_proportions = true,
         width = 40, 
         side = 'left',
         signcolumn = "yes", -- Keeps the signcolumn visible
+    },
+    actions = {
+        open_file = {
+            resize_window = false,
+        },
     },
     update_focused_file = { enable = true },
     git = {

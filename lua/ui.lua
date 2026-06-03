@@ -1,3 +1,4 @@
+vim.o.equalalways = false
 vim.opt.background = "light"
 vim.cmd.colorscheme('github_light_default')
 vim.o.equalalways = false
@@ -83,19 +84,36 @@ vim.diagnostic.config({
     },
 })
 
-local function restore_nvim_tree()
-    local has_tree, api = pcall(require, "nvim-tree.api")
-    if has_tree then
-        api.tree.open({ focus = false, find_file = true })
-    end
-end
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
-local session_group = vim.api.nvim_create_augroup("SessionRestore", { clear = true })
+local session_group = vim.api.nvim_create_augroup("SessionRestoreSequence", { clear = true })
 
 vim.api.nvim_create_autocmd("SessionLoadPost", {
     group = session_group,
     callback = function()
-        vim.defer_fn(restore_nvim_tree, 50)
+        local win_heights = {}
+        local win_widths = {}
+        local windows = vim.api.nvim_tabpage_list_wins(0)
+
+        for _, win in ipairs(windows) do
+            win_heights[win] = vim.api.nvim_win_get_height(win)
+            win_widths[win] = vim.api.nvim_win_get_width(win)
+        end
+
+        local has_tree, api = pcall(require, "nvim-tree.api")
+        if has_tree then
+            api.tree.open({ focus = false, find_file = true })
+        end
+
+        for win, saved_height in pairs(win_heights) do
+            if vim.api.nvim_win_is_valid(win) then
+                vim.api.nvim_win_set_height(win, saved_height)
+            end
+        end
+        for win, saved_width in pairs(win_widths) do
+            if vim.api.nvim_win_is_valid(win) then
+                vim.api.nvim_win_set_width(win, saved_width)
+            end
+        end
     end,
 })
-

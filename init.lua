@@ -11,7 +11,6 @@ if not is_headless then
     require('search')
     require('files')
     require('git')
-    require('ui')
 
     -- Load utilities that depend on Telescope/Plugins
     require('tab_utils')
@@ -31,13 +30,3 @@ else
     -- so we don't trigger "module not found" errors.
     print("Octopus: Headless mode detected. Skipping plugin-dependent modules.\n")
 end
-
--- Session management options (save everything)
-vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-
--- Set up system clipboard
-vim.opt.clipboard = "unnamedplus"
-
--- Force TrueColor and prevent SSH detection lag
-vim.opt.termguicolors = true
-
