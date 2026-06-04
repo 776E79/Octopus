@@ -1,4 +1,4 @@
-vim.cmd.colorscheme('github_light_default')
+vim.cmd.colorscheme('github_dark_dimmed')
 vim.o.equalalways = false
 vim.opt.winbar = " %t %m%= "
 
