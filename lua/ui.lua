@@ -4,18 +4,14 @@ vim.opt.winbar = " %t %m%= "
 
 local UI_Highlight_Group = vim.api.nvim_create_augroup("WinHighlightManagement", { clear = true })
 
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "TermOpen" }, {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = UI_Highlight_Group,
     callback = function()
         if vim.bo.filetype == "NvimTree" then
             return
         end
 
-        if vim.bo.buftype == "terminal" then
-            vim.wo.winhighlight = "Normal:NormalSB,WinBar:NormalSB,SignColumn:SignColumnSB"
-        else
-            vim.wo.winhighlight = "WinBar:NormalSB,SignColumn:SignColumnSB"
-        end
+        vim.wo.winhighlight = "WinBar:NormalSB,SignColumn:SignColumnSB"
     end,
 })
 

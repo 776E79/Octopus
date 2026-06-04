@@ -16,7 +16,7 @@ vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.showmatch = true
 vim.opt.splitbelow = true
-vim.opt.lazyredraw = true
+vim.opt.lazyredraw = false
 vim.opt.synmaxcol = 200
 vim.opt.comments = "sl:/*,mb:\\ *,elx:*/"
 
