@@ -1,5 +1,3 @@
-vim.o.equalalways = false
-vim.opt.background = "light"
 vim.cmd.colorscheme('github_light_default')
 vim.o.equalalways = false
 vim.opt.winbar = " %t %m%= "
