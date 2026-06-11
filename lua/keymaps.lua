@@ -59,6 +59,20 @@ vim.keymap.set('n', '<leader>p', palette.telescope_palette, { desc = 'Telescope 
 vim.keymap.set('n', '<leader>fl', ':Telescope find_files<CR>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>bl', ':Telescope buffers<CR>', { desc = 'List buffers' })
 vim.keymap.set('n', '<leader>$', ':Telescope live_grep<CR>', { desc = 'Grep in project' })
+vim.keymap.set('n', '<leader>%', function()
+    require('telescope.builtin').live_grep({
+        grep_open_files = true,
+        prompt_title = "Live Grep (Open Buffers)",
+    })
+end, { desc = 'Grep through open buffers only' })
+vim.keymap.set('n', '<leader>^', function()
+    require('telescope.builtin').current_buffer_fuzzy_find(
+        require('telescope.themes').get_dropdown({
+            winblend = 10,
+            previewer = true,
+        })
+    )
+end, { desc = 'Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>sr', ':GrugFar<CR>', { desc = 'Search and Replace' })
 vim.keymap.set('n', '<leader>m', ':Telescope man_pages sections={"1","2","3"}<CR>', { desc = 'Man pages' })
 
