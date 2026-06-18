@@ -24,6 +24,7 @@ if not is_headless then
     require('keymaps')
     require('autocommands')
     require('statline')
+    require('session')
     require('ui')
 else
     -- In headless mode, we only want the bare minimum keymaps

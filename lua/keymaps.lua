@@ -17,9 +17,14 @@ vim.keymap.set('n', '<leader>ss', '<cmd>wa<cr>', { desc = 'save all buffers' })
 vim.keymap.set('n', '<leader>sa', files.save_as, { desc = 'Save buffer as...' })
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 vim.keymap.set('n', '<leader>q', ':qa<CR>', { desc = 'Quit all' })
-vim.keymap.set('n', '<leader>QQ', ':qa!<CR>', { desc = 'Force quit all' })
+vim.keymap.set('n', '<leader>Q', ':qa!<CR>', { desc = 'Force quit all' })
 vim.keymap.set('n', '<leader>e', toggle_tree, { desc = 'Toggle file explorer focus' })
 vim.keymap.set('n', '<leader>E', ':NvimTreeToggle<CR>', { desc = 'Toggle file' })
+
+-- Session management
+vim.keymap.set('n', '<leader>SS', ':Telescope persisted<CR>', { desc = 'Toggle file' })
+vim.keymap.set('n', '<leader>SF', ':Persisted save<CR>', { desc = 'Toggle file' })
+
 
 -- Windowing
 vim.keymap.set('n', '<leader>wn', '<C-w>n', { desc = 'Quickly jump to next window (creates one if none)' })
