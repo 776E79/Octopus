@@ -8,7 +8,18 @@ require("neogit").setup({
     diff_view = "side_by_side",
 })
 
-require("diffview").setup({})
+require("diffview").setup({
+    keymaps = {
+        view = {
+            -- Press q to cleanly close the entire Diffview tab/split
+            { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+        },
+        file_panel = {
+            -- Also bind q inside the file sidebar panel if you use it
+            { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+        },
+    },
+})
 
 require('gitsigns').setup({
     diff_opts = {
